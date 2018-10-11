@@ -98,7 +98,7 @@ def euler_maruyama_strong_convergence(M, N, T, X0, LAMBDA, MU):
 		dW = np.sqrt(dt) * np.random.normal(0, 1, N)
 		dW[0] = 0
 		W = np.cumsum(dW)
-		X_true = X0 * np.exp((LAMBDA - 0.5 * MU**2) + MU * W[-1])
+		X_true = X0 * np.exp((LAMBDA - 0.5 * MU**2) * 1 + MU * W[-1])
 
 		for p in range(5):
 			R = 2**(p - 1)
@@ -127,21 +127,6 @@ def euler_maruyama_strong_convergence(M, N, T, X0, LAMBDA, MU):
 	plt.show()
 
 
-def milstein_strong_convergence():
-	# TODO
-	pass
-
-
-def euler_maruyama_stability():
-	# TODO
-	pass
-
-
-def stochastic_chain_rule():
-	# TODO
-	pass
-
-
 def main():
 	M = 1000
 	N = 512
@@ -151,9 +136,6 @@ def main():
 	stochastic_integral(N, T)
 	euler_maruyama(N, T, X0=1, LAMBDA=2, MU=1, R=2)
 	euler_maruyama_strong_convergence(M, N, T, X0=1, LAMBDA=2, MU=1)
-	milstein_strong_convergence()
-	euler_maruyama_stability()
-	stochastic_chain_rule()
 
 
 if __name__ == '__main__':
